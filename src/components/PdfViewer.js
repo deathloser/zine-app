@@ -46,6 +46,12 @@ function PdfViewer() {
 
     return(
         <div>
+            <iframe
+   title="file"
+   style={{ width: '100%', height: '100%' }}
+   src={file}
+/>
+
             <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
             <Page pageNumber={pageNumber} />
             </Document>
