@@ -12,7 +12,7 @@ function PdfViewer() {
 
     const pdfFiles = ['./Screen Shot 2022-05-13 at 12.40.05 PM.pdf','./Screen Shot 2022-05-13 at 12.40.13 PM.pdf','./Screen Shot 2022-05-13 at 12.40.18 PM.pdf']
 
-    const [file, setFile] = useState('./Screen Shot 2022-05-13 at 12.40.05 PM.pdf');
+    const [file, setFile] = useState('/Screen Shot 2022-05-13 at 12.40.05 PM.pdf');
 
     const changePage = (offset) => {
         setPageNumber(prevPageNumber => prevPageNumber + offset);
