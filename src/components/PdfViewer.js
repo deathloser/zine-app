@@ -1,14 +1,10 @@
 import React from "react";
 import { useState } from "react";
 
+import { Document , Page} from 'react-pdf/dist/esm/entry.webpack';
 
-import { Document, Page, pdfjs } from "react-pdf";
-import pdfjsWorker from "react-pdf/node_modules/pdfjs-dist/build/pdf.worker.entry";
-
-pdfjs.GlobalWorkerOptions.workerSrc = pdfjsWorker;
-
-
-
+import { pdfjs } from 'react-pdf';
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function PdfViewer() {
     const [numPages,setNumPages] = useState(null);
@@ -17,7 +13,7 @@ function PdfViewer() {
 
     const pdfFiles = ['./Screen Shot 2022-05-13 at 12.40.05 PM.pdf','./Screen Shot 2022-05-13 at 12.40.13 PM.pdf','./Screen Shot 2022-05-13 at 12.40.18 PM.pdf']
 
-    const [file, setFile] = useState('./Screen Shot 2022-05-13 at 12.40.05 PM.pdf');
+    const [file, setFile] = useState('/Screen Shot 2022-05-13 at 12.40.05 PM.pdf');
 
     const changePage = (offset) => {
         setPageNumber(prevPageNumber => prevPageNumber + offset);
@@ -46,11 +42,7 @@ function PdfViewer() {
 
     return(
         <div>
-            <iframe
-   title="file"
-   style={{ width: '100%', height: '100%' }}
-   src={file}
-/>
+
 
             <Document file={file} onLoadSuccess={onDocumentLoadSuccess} options={options}>
             <Page pageNumber={pageNumber} />
